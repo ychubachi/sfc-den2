@@ -30,12 +30,17 @@ if ($user) {
     'redirect_uri' => 'https://apps.facebook.com/sakauratestai/'
   ));
 //  header("Location: http://example.jp/");
-//  header("Location: {$loginUrl}");
-echo("<script> top.location.href='" . $loginUrl . "'</script>");
+  header("Location: {$loginUrl}");
+//echo("<script> top.location.href='" . $loginUrl . "'</script>");
   exit;
 }
 
-
+    // メッセージが投稿されたときは Facebook に送信
+    if(isset($_POST['message'])) {
+        $facebook->api('/me/feed', 'POST', array(
+            'message' => $_POST['message'],
+        ));
+    }
 ?>
 <!doctype html>
 <meta charset="utf-8">
@@ -129,6 +134,20 @@ echo("<script> top.location.href='" . $loginUrl . "'</script>");
     <?php else: ?>
       <strong><em>You are not Connected.</em></strong>
     <?php endif ?>
+
+<?php if ($user): ?>
+  <p><?php echo $user_profile['name'] ?> さんの今日の気分は？</p>
+  <form action="" method="post">
+    <ul>
+      <li><input type="submit" name="message" value="飲みに行こう！" /></li>
+      <li><input type="submit" name="message" value="探さないでください" /></li>
+      <li><input type="submit" name="message" value="ぎゃふん" /></li>
+    </ul>
+  </form>
+<?php else: ?>
+  <p>アプリを使用するには<a target="_top" href="<?php echo $loginUrl ?>">ログイン</a>してください</p>
+<?php endif ?>
+
 
   </body>
 </html>
