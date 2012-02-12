@@ -26,7 +26,7 @@ if ($user) {
   $logoutUrl = $facebook->getLogoutUrl();
 } else {
   $loginUrl = $facebook->getLoginUrl(array(
-    'scope' => 'publish_stream'
+    'scope' => 'publish_stream,user_birthday'
   ));
 }
 
