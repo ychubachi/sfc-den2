@@ -3,8 +3,10 @@ require 'php-sdk/src/facebook.php';
 
 // インスタンス生成
 $facebook = new Facebook(array(
-  'appId'  => '185962178177200', // for YC
-  'secret' => '7d297d8f025ab9497ffb7a8267f7d16c' // YC
+   'appId'  => '139869786134181',
+   'secret' => '00032eaeb46e598f9c69aa07400e9458',
+//  'appId'  => '185962178177200', // for YC
+//  'secret' => '7d297d8f025ab9497ffb7a8267f7d16c' // YC
 ));
 
 // ユーザＩＤ取得
@@ -26,6 +28,9 @@ if ($user) {
   $loginUrl = $facebook->getLoginUrl(array(
     'scope' => 'publish_stream,user_birthday'
   ));
+//  header("Location: http://example.jp/");
+  header("Location: {$loginUrl}");
+  exit;
 }
 
 
@@ -102,10 +107,12 @@ if ($user) {
     <?php if ($user): ?>
       <a href="<?php echo $logoutUrl; ?>">Logout</a>
     <?php else: ?>
-      <div>
-        Login using OAuth 2.0 handled by the PHP SDK:
-        <a href="<?php echo $loginUrl; ?>">Login with Facebook</a>
-      </div>
+//      </div>
+       Login using OAuth 2.0 handled by the PHP SDK:
+  header("HTTP/1.1 301 Moved Permanently");
+  header($loginUrl);
+//        <a href="<?php echo $loginUrl; ?>">Login with Facebook</a>
+//      </div>
     <?php endif ?>
 
     <h3>PHP Session</h3>
