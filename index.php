@@ -3,8 +3,10 @@ require 'php-sdk/src/facebook.php';
 
 // インスタンス生成
 $facebook = new Facebook(array(
-  'appId'  => '331776486852885',
-  'secret' => '747cd4da64bc29b167e8d57a399655ad',
+//   'appId'  => '331776486852885',
+//   'secret' => '747cd4da64bc29b167e8d57a399655ad',
+  'appId'  => '185962178177200', // for YC
+  'secret' => '7d297d8f025ab9497ffb7a8267f7d16c', // YC
 ));
 
 // ユーザＩＤ取得
