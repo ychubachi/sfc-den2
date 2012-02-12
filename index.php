@@ -26,10 +26,12 @@ if ($user) {
   $logoutUrl = $facebook->getLogoutUrl();
 } else {
   $loginUrl = $facebook->getLoginUrl(array(
-    'scope' => 'publish_stream,user_birthday'
+    'scope' => 'publish_stream,user_birthday',
+    'redirect_uri' => 'https://apps.facebook.com/sakauratestai/'
   ));
 //  header("Location: http://example.jp/");
-  header("Location: {$loginUrl}");
+//  header("Location: {$loginUrl}");
+echo("<script> top.location.href='" . $loginUrl . "'</script>");
   exit;
 }
 
