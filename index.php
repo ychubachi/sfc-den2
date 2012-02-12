@@ -59,8 +59,8 @@ if ($user) {
     }
     $name_p1 = "きゃりーぱみゅぱみゅ";
     $name_p2 = "温水洋一";
-    $img_p1 = "/images/pmpm.jpg";
-    $img_p2 = "/images/nknk.jpg";
+    $img_p1 = "images/pmpm.jpg";
+    $img_p2 = "images/nknk.jpg";
     ?>
 
     <form action = "main.php" method = "POST">
