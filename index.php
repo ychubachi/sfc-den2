@@ -10,8 +10,6 @@ $facebook = new Facebook(array(
 // ユーザＩＤ取得
 $user = $facebook->getUser();
 
-// $user_id = $facebook->require_login("publish_stream");
-
 if ($user) {
   try {
     // Proceed knowing you have a logged in user who's authenticated.
